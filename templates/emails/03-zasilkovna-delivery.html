@@ -1,0 +1,83 @@
+<!--
+  Scenario: 03-zasilkovna-delivery
+  Type:     Oznámení o doručení zásilky
+  Brand:    Zásilkovna / Packeta (vizuál notifikace o výdejním místě)
+  Subject:  Vaše zásilka čeká na Z-BOXu, dokončete prosím předání
+  From:     Zásilkovna <doruceni@zasilkovna-notifikace.example>
+            (lookalike doména; skutečná komunikace chodí z domény
+            zasilkovna.cz / packeta.com)
+  Trigger:  zvědavost ("co jsem si to objednal/a?") + urgence (krátká lhůta
+            vyzvednutí) + drobný doplatek.
+  Red flags pro debrief: odesílací doména není zasilkovna.cz, číslo zásilky
+    nelze dohledat ve skutečné aplikaci, požadavek na úhradu "doplatku" kartou
+    přímo z e-mailu (Zásilkovna doplatek řeší na místě/v appce, ne přes
+    externí platební odkaz v e-mailu), umělá časová tíseň (24 hodin).
+  Vizuální reference: červená značková barva (přibližně #D2002E) a
+    jednoduchá ikona krabice, ověřeno pohledem na zasilkovna.cz v listopadu
+    2026. Žádný oficiální obrázek loga není použit.
+  Merge fields: {{recipient_name}}, {{tracking_number}}, {{tracking_url}},
+                {{pickup_point}}
+-->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zásilka čeká na vyzvednutí</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+          <tr>
+            <td style="background-color:#D2002E; padding:16px 28px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="font-size:20px; padding-right:8px;">&#128230;</td>
+                  <td style="font-size:19px; font-weight:bold; color:#ffffff; letter-spacing:0.3px;">Zásilkovna</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px;">
+              <p style="margin:0 0 16px 0; font-size:14px; color:#222222;">Dobrý den, {{recipient_name}},</p>
+              <p style="margin:0 0 16px 0; font-size:14px; color:#222222; line-height:1.6;">
+                Vaše zásilka <strong>č. {{tracking_number}}</strong> dorazila
+                na výdejní místo <strong>{{pickup_point}}</strong>. Před
+                vyzvednutím je potřeba dokončit elektronické potvrzení
+                převzetí a doplatit poštovné ve výši <strong>15 Kč</strong>,
+                které nebylo při objednávce uhrazeno.
+              </p>
+              <p style="margin:0 0 20px 0; font-size:14px; color:#222222; line-height:1.6;">
+                Zásilka bude na výdejním místě uložena po dobu
+                <strong>24 hodin</strong>, poté bude vrácena odesílateli.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="border-radius:4px; background-color:#D2002E;">
+                    <a href="{{tracking_url}}" target="_blank" style="display:inline-block; padding:12px 28px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:bold;">Dokončit převzetí a doplatek</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:24px 0 0 0; font-size:12px; color:#777777; line-height:1.5;">
+                Číslo zásilky: {{tracking_number}}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 28px; border-top:1px solid #eeeeee;">
+              <p style="margin:0; font-size:11px; color:#999999; line-height:1.5;">
+                Tuto zprávu jste obdrželi, protože na tuto adresu směřuje
+                sledovaná zásilka. Automaticky generováno, neodpovídejte na
+                tento e-mail.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

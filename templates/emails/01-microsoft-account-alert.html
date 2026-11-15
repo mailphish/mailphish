@@ -1,0 +1,106 @@
+<!--
+  Scenario: 01-microsoft-account-alert
+  Type:     Account / security alert
+  Brand:    Microsoft (vizuál Microsoft 365 / "Microsoft account team")
+  Subject:  Neobvyklé přihlašovací chování k účtu Microsoft
+  From:     Microsoft account team <account-security-noreply@micr0soft-verify.example>
+            (lookalike doména: "0" místo "o"; v reálu má Microsoft jen domény
+            jako microsoft.com / account.microsoft.com)
+  Trigger:  autorita (důvěryhodná globální značka) + strach (neoprávněný
+            přístup) + urgence.
+  Red flags pro debrief: odesílací doména je typosquat ("micr0soft-verify"),
+    skutečné upozornění od Microsoftu nikdy nežádá přihlášení přes odkaz v
+    e-mailu, obecné oslovení bez jména, tlačítko vede mimo
+    account.microsoft.com, "zařízení" a "poloha" jsou záměrně vágní.
+  Vizuální reference: oficiální barvy loga Microsoft (#F25022, #7FBA00,
+    #00A4EF, #FFB900) a modrá akční barva #0078D4, ověřeno pohledem na
+    microsoft.com/microsoft-365 v listopadu 2026. Logo je zde nahrazeno
+    jednoduchými barevnými čtverci, žádný oficiální obrázek loga není použit.
+  Merge fields: {{recipient_name}}, {{recipient_email}}, {{tracking_url}},
+                {{login_time}}, {{login_location}}
+-->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neobvyklé přihlašovací chování k účtu Microsoft</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f3f3f3; font-family:'Segoe UI', Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f3f3f3; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+          <tr>
+            <td style="padding:24px 32px 16px 32px; border-bottom:1px solid #edebe9;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding-right:10px;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:11px; height:11px; background-color:#F25022; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td style="width:2px;"></td>
+                        <td style="width:11px; height:11px; background-color:#7FBA00; font-size:1px; line-height:1px;">&nbsp;</td>
+                      </tr>
+                      <tr><td colspan="3" style="height:2px;"></td></tr>
+                      <tr>
+                        <td style="width:11px; height:11px; background-color:#00A4EF; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td style="width:2px;"></td>
+                        <td style="width:11px; height:11px; background-color:#FFB900; font-size:1px; line-height:1px;">&nbsp;</td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td style="font-size:20px; color:#5e5e5e; font-weight:600;">Microsoft</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px 32px 8px 32px;">
+              <p style="margin:0 0 4px 0; font-size:20px; color:#1b1b1b; font-weight:600;">Neobvyklé přihlašovací chování</p>
+              <p style="margin:0 0 18px 0; font-size:14px; color:#444444; line-height:1.6;">
+                Zaznamenali jsme přihlášení k účtu <strong>{{recipient_email}}</strong>,
+                které neodpovídá obvyklému vzoru chování tohoto účtu.
+              </p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#faf9f8; border:1px solid #edebe9; border-radius:2px; margin-bottom:18px;">
+                <tr>
+                  <td style="padding:14px 18px; font-size:13px; color:#323130; line-height:1.8;">
+                    <strong>Čas:</strong> {{login_time}}<br>
+                    <strong>Přibližná poloha:</strong> {{login_location}}<br>
+                    <strong>Platforma:</strong> Windows, Edge
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0 0 20px 0; font-size:14px; color:#444444; line-height:1.6;">
+                Pokud jste to byli Vy, nemusíte nic dělat. Pokud toto
+                přihlášení nepoznáváte, doporučujeme si ihned zkontrolovat
+                zabezpečení účtu.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="border-radius:2px; background-color:#0078D4;">
+                    <a href="{{tracking_url}}" target="_blank" style="display:inline-block; padding:11px 26px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:600;">Zkontrolovat aktivitu účtu</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:22px 32px 28px 32px; border-top:1px solid #edebe9;">
+              <p style="margin:0 0 6px 0; font-size:11px; color:#605e5c; line-height:1.6;">
+                Tento e-mail byl odeslán ze zabezpečeného systému oznámení.
+                Pokud máte podezření, že nejde o legitimní zprávu, přepněte
+                se přímo na account.microsoft.com (nikoli přes odkaz v tomto
+                e-mailu) a zkontrolujte zabezpečení účtu tam.
+              </p>
+              <p style="margin:0; font-size:11px; color:#a19f9d;">
+                Microsoft Corporation, One Microsoft Way, Redmond, WA 98052
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

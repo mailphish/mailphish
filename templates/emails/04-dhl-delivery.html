@@ -1,0 +1,77 @@
+<!--
+  Scenario: 04-dhl-delivery
+  Type:     Oznámení o doručení zásilky
+  Brand:    DHL (vizuál notifikace o nedoručené zásilce)
+  Subject:  Doručení zásilky {{tracking_number}} se nezdařilo
+  From:     DHL Express <info@dhl-sledovani.example>
+            (lookalike doména; skutečný DHL komunikuje z domén jako
+            dhl.com / dhl.cz)
+  Trigger:  urgence (zásilka se vrátí odesílateli) + zvědavost + drobný
+            celní/manipulační poplatek.
+  Red flags pro debrief: odesílací doména neodpovídá dhl.com/dhl.cz,
+    požadavek na úhradu "celního poplatku" kartou přes odkaz z e-mailu
+    (DHL skutečné celní poplatky řeší jinak a vždy přes oficiální portál),
+    generické sledovací číslo, tlak časem.
+  Vizuální reference: žlutý pruh v barvě #FFCC00 a červený tučný nakloněný
+    nápis DHL v barvě přibližně #D40511, ověřeno pohledem na dhl.com/cz-cs
+    v listopadu 2026. Žádný oficiální obrázek loga není použit, jde o prostý
+    stylovaný text.
+  Merge fields: {{recipient_name}}, {{tracking_number}}, {{tracking_url}}
+-->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doručení zásilky se nezdařilo</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f4f4; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+          <tr>
+            <td style="background-color:#FFCC00; padding:16px 28px;">
+              <span style="font-size:24px; font-weight:800; font-style:italic; color:#D40511; letter-spacing:1px;">DHL</span>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px;">
+              <p style="margin:0 0 16px 0; font-size:14px; color:#222222;">Dobrý den, {{recipient_name}},</p>
+              <p style="margin:0 0 16px 0; font-size:14px; color:#222222; line-height:1.6;">
+                pokusili jsme se doručit Vaši zásilku
+                <strong>č. {{tracking_number}}</strong>. Doručení se
+                nezdařilo, protože za zásilku zbývá uhradit celní a
+                manipulační poplatek ve výši <strong>89 Kč</strong>.
+              </p>
+              <p style="margin:0 0 20px 0; font-size:14px; color:#222222; line-height:1.6;">
+                Po úhradě poplatku zásilku doručíme do 1 pracovního dne.
+                Pokud poplatek neuhradíte do <strong>48 hodin</strong>,
+                zásilka bude vrácena odesílateli.
+              </p>
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="border-radius:4px; background-color:#D40511;">
+                    <a href="{{tracking_url}}" target="_blank" style="display:inline-block; padding:12px 28px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:bold;">Uhradit poplatek a doručit</a>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:24px 0 0 0; font-size:12px; color:#777777; line-height:1.5;">
+                Sledovací číslo: {{tracking_number}}
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:18px 28px; border-top:1px solid #eeeeee;">
+              <p style="margin:0; font-size:11px; color:#999999; line-height:1.5;">
+                DHL Express &mdash; automaticky generovaná zpráva, na tento
+                e-mail prosím neodpovídejte.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

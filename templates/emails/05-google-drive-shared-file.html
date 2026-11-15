@@ -1,0 +1,99 @@
+<!--
+  Scenario: 05-google-drive-shared-file
+  Type:     Sdílený dokument
+  Brand:    Google Drive
+  Subject:  {{sender_display_name}} s Vámi sdílel/a soubor "Mzdy_Q4_navrh.xlsx"
+  From:     Google Drive <drive-shares-noreply@google-docs-notify.example>
+            (lookalike doména; skutečné notifikace Drive chodí z
+            @google.com / @drive.google.com)
+  Trigger:  důvěra (běžná firemní notifikace) + zvědavost (citlivý název
+            souboru) + sociální důkaz (jméno kolegy jako odesílatele, což je
+            jen zobrazované jméno a je snadno spoofitelné).
+  Red flags pro debrief: odesílací doména neodpovídá google.com, náhled
+    souboru je jen obrázek, ne skutečný live náhled, tlačítko vede mimo
+    drive.google.com a vyžaduje opětovné zadání firemního hesla.
+  Vizuální reference: barevný trojúhelníkový symbol Google Drive (modrá/
+    zelená/žlutá) a modré tlačítko #1a73e8, ověřeno pohledem na
+    workspace.google.com/products/drive v listopadu 2026. Logo je zde
+    nahrazeno jednoduchými barevnými tvary, žádný oficiální obrázek není
+    použit.
+  Merge fields: {{recipient_name}}, {{sender_display_name}}, {{tracking_url}}
+-->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soubor byl s Vámi sdílen na Google Drive</title>
+</head>
+<body style="margin:0; padding:0; background-color:#f1f3f4; font-family:Roboto, Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f1f3f4; padding:24px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e0e0e0;">
+          <tr>
+            <td style="padding:24px 32px 6px 32px;" align="center">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td style="padding-right:8px;">
+                    <div style="width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:16px solid #2684FC;"></div>
+                  </td>
+                  <td style="font-size:19px; color:#5f6368; font-weight:500;">Google Drive</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:14px 40px 4px 40px;" align="center">
+              <p style="margin:0 0 4px 0; font-size:14px; color:#3c4043;">
+                <strong>{{sender_display_name}}</strong> s Vámi sdílel/a soubor
+              </p>
+              <p style="margin:0 0 18px 0; font-size:17px; color:#202124; font-weight:500;">
+                Mzdy_Q4_navrh.xlsx
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:0 40px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e0e0e0; border-radius:8px;">
+                <tr>
+                  <td style="padding:16px; text-align:center; background-color:#f8f9fa;">
+                    <div style="width:100%; height:110px; background-color:#e8f0fe; border-radius:4px; display:block; line-height:110px; color:#1a73e8; font-size:13px; font-weight:500;">
+                      [ Náhled tabulky &mdash; vyžaduje přihlášení ]
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:22px 40px 6px 40px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="center" style="border-radius:4px; background-color:#1a73e8;">
+                    <a href="{{tracking_url}}" target="_blank" style="display:inline-block; padding:10px 28px; font-size:14px; color:#ffffff; text-decoration:none; font-weight:500;">Otevřít v Disku Google</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:8px 40px 26px 40px;">
+              <p style="margin:0; font-size:12px; color:#80868b; line-height:1.6;">
+                Přístup k souboru vyžaduje přihlášení účtem {{recipient_name}}.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:16px 32px; border-top:1px solid #f1f1f1;" align="center">
+              <p style="margin:0; font-size:11px; color:#80868b;">
+                Tuto notifikaci jste obdrželi, protože máte účet Google.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
