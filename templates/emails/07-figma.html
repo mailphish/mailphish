@@ -1,0 +1,130 @@
+<!--
+  Scenario: 07-figma (reference-legit-figma-approval)
+  Type:     REFERENČNÍ příklad -- SKUTEČNÝ, legitimní e-mail (není to phishing)
+  Zdroj:    Ručně přepsáno a sanitizováno podle reálného transakčního e-mailu
+            od Figmy ("Your request to edit ... has been approved"), který
+            uživatel dostal do schránky.
+  Účel:     Tento soubor NENÍ cvičná návnada. Slouží jako referenční
+            příklad pro debrief -- "takhle vypadá SKUTEČNÝ e-mail od
+            Figmy", pro srovnání s look-alike doménami a umělou urgencí
+            v ostatních šablonách této knihovny.
+
+  Proč to není 1:1 kopie originálu:
+    Originální zdrojový HTML (Gmail export) obsahoval:
+      - skutečné sledovací odkazy přes click.figma.com s tokenem vázaným
+        na konkrétní e-mailovou schránku příjemce,
+      - obrázky loga a ikon hostované na static.figma.com (cizí
+        copyrightovaná grafika),
+      - skrytý 1x1 sledovací pixel,
+      - Gmail interní ID vlákna/zprávy vázané na účet příjemce.
+    Všechny tyto prvky byly z šablony odstraněny / nahrazeny neutrálními
+    zástupnými hodnotami, aby soubor (a) nereprodukoval cizí grafická
+    aktiva, (b) neobsahoval žádná osobní/sledovací data skutečného
+    příjemce a (c) aby ho šlo bezpečně uložit do veřejně sdíleného
+    repozitáře. Obsah a vizuální rozvržení (text tlačítka, nadpis,
+    patička s fyzickou adresou) odpovídá originálu.
+
+  Co dělá tento e-mail LEGITIMNÍM (k vysvětlení v debriefu, porovnejte
+  s red flags v ostatních šablonách):
+    - Odesílatel by ve skutečnosti byl z domény @figma.com, žádný
+      look-alike ani divný tvar domény.
+    - Žádná umělá časová tíseň ani vyhrožování ztrátou přístupu --
+      jde o čistě informativní potvrzení akce, kterou uživatel sám
+      inicioval (požádal o editaci souboru).
+    - Patička obsahuje skutečnou fyzickou adresu sídla firmy (vyžaduje
+      to americký zákon CAN-SPAM pro hromadné/transakční e-maily) --
+      cvičné phishingové šablony v této složce schválně žádnou fyzickou
+      adresu neuvádějí.
+    - Tlačítko vede přímo do aplikace na figma.com, ne na externí
+      přihlašovací formulář, který by znovu chtěl heslo.
+  Merge fields: {{file_name}}, {{tracking_url}}
+-->
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reference: skutečný e-mail od Figmy (schválení úpravy)</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ffffff; font-family:Arial, Helvetica, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#ffffff;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px; margin:0 auto;">
+          <tr>
+            <td align="left" style="padding:28px 24px 24px;">
+              <table role="presentation" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td>
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="width:9px; height:9px; background-color:#F24E1E; border-radius:9px 9px 0 0; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td style="width:9px; height:9px; background-color:#FF7262; border-radius:0 9px 9px 0; font-size:1px; line-height:1px;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td style="width:9px; height:9px; background-color:#A259FF; border-radius:9px; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td style="width:9px; height:9px; background-color:#1ABCFE; border-radius:0 9px 0 9px; font-size:1px; line-height:1px;">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td style="width:9px; height:9px; background-color:#0ACF83; border-radius:0 0 9px 9px; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0 10px 60px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:550px; margin:0 auto;">
+                <tr>
+                  <td align="center" style="font-size:24px; line-height:32px; font-weight:normal; color:#000000; padding:30px 20px;">
+                    Your request to edit <strong>&quot;{{file_name}}&quot;</strong> has been approved.
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding:30px 0 0;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="background-color:#ffffff; font-weight:bold; font-size:18px; line-height:22px; border:3px solid #000000; border-radius:5px;">
+                          <a href="{{tracking_url}}" target="_blank" style="padding:12px 27px; color:#000000; text-decoration:none; display:block;">Edit in Figma</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:540px; margin:0 auto;">
+                <tr>
+                  <td align="center" style="border-top:1px solid #dedede; color:#a5a5a5; font-size:14px; line-height:18px; text-align:center; padding:60px 24px 32px;">
+                    Figma je platforma pro týmovou spolupráci na designu.
+                    <em>(V reálném e-mailu zde následuje delší marketingová
+                    věta Figmy -- záměrně ji zde necitujeme doslovně,
+                    jde o jejich vlastní marketingový text.)</em>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:0 0 16px;">
+              <span style="font-size:11px; color:#a5a5a5; letter-spacing:1px;">FIGMA &middot; X &middot; INSTAGRAM &middot; YOUTUBE &middot; LINKEDIN</span>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="font-size:12px; line-height:17px; color:#a5a5a5; padding:0 0 32px;">
+              760 Market Street, Floor 10<br>
+              San Francisco, CA, 94102
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

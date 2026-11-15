@@ -81,7 +81,7 @@ faktura), ale podle toho, jestli zpráva *vypadá jako od firmy, které
 důvěřují*. Proto je knihovna navržená opačně, než v první verzi: místo
 mnoha různých fiktivních pretextů pod jednou neznámou fiktivní firmou
 (*Nordex Trading*) používá jen **tři typy situací**, každý ve variantě pro
-**dvě skutečné, celosvětově nebo lokálně velmi známé značky**. To
+**dvě až tři skutečné, celosvětově nebo lokálně velmi známé značky**. To
 zvyšuje realističnost (účastníci tyto služby skutečně používají) a
 zároveň umožňuje v debriefu porovnat, jak stejný trik vypadá pod různým
 brandingem.
@@ -109,7 +109,7 @@ administrátorovi cvičení a autorům materiálů.
 
 Vizuální styl (barvy, rozvržení, tón textu) každé šablony byl ověřen
 pohledem na veřejné stránky dané značky (microsoft.com, workspace.google.com,
-zasilkovna.cz, dhl.com) v listopadu 2026. Značkové logo samotné nikde
+zasilkovna.cz, dhl.com, figma.com) v listopadu 2026. Značkové logo samotné nikde
 nepoužíváme jako obrázek – je nahrazeno jednoduchými CSS tvary nebo
 barevným textem ve veřejně známé firemní barevné paletě, aby šablony
 nereprodukovaly chráněné grafické aktivum dané firmy. Všechny domény
@@ -119,7 +119,37 @@ reálně nenasměrovaná) a jsou stylizované jako typický look-alike vzor
 do subdomény), aby bylo jasné, že jde o cvičný materiál, a zároveň aby
 demonstrovaly skutečný vzor, který útočníci používají.
 
-## 4. Etika a hranice použití
+## 4. Referenční legitimní e-mail
+
+[`07-figma.html`](07-figma.html) není cvičná návnada, ale sanitizovaná
+rekonstrukce skutečného transakčního e-mailu od Figmy ("vaše žádost o
+úpravu souboru byla schválena"), vycházející z reálného e-mailu, který
+obdržel jeden z autorů projektu. Slouží jako referenční příklad pro
+debrief – ukazuje, jak vypadá skutečný e-mail od legitimní značky, na
+rozdíl od look-alike domén a umělé urgence v návnadách výše. Pokud
+knihovna v budoucnu dostane i simulovanou phishingovou variantu pro
+Figmu (ve stylu ostatních scénářů), dává smysl umístit oba soubory vedle
+sebe pro přímé srovnání v debriefu.
+
+Z originálního zdrojového HTML (exportu z Gmailu) byly před uložením do
+repozitáře odstraněny:
+- skutečné sledovací odkazy `click.figma.com` nesoucí token vázaný na
+  konkrétní schránku příjemce,
+- obrázky loga a ikon hostované na `static.figma.com` (cizí
+  copyrightovaná grafika Figmy),
+- skrytý sledovací pixel 1×1,
+- interní ID e-mailového vlákna/zprávy z Gmailu vázané na účet
+  příjemce.
+
+Ponechán byl skutečný obsah, rozvržení a tón textu (včetně fyzické
+adresy sídla Figmy v patičce, kterou vyžaduje americký zákon CAN-SPAM
+pro hromadné/transakční e-maily – cvičné šablony v této složce ji
+záměrně neuvádějí, což je samo o sobě jeden z red flags). Jde o stejný
+princip, jaký dodržují i ostatní šablony v této knihovně: žádná cizí
+grafika, žádná osobní nebo sledovací data, jen vizuální styl a text
+rekonstruované z veřejně ověřitelných/pozorovaných skutečností.
+
+## 5. Etika a hranice použití
 
 - Tento repozitář je školní projekt a šablony jsou určené výhradně pro
   **vlastní, kontrolované cvičné prostředí** popsané v
